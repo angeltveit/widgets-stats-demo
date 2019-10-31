@@ -1,6 +1,5 @@
 import { Component, Template, Attribute } from '@scoutgg/widgets'
 import template from './stats-table.pug'
-import { isBuffer } from 'util';
 
 @Component('demo')
 @Attribute('season', Number)
@@ -24,8 +23,8 @@ export default class StatsTable extends HTMLElement {
     const { seasonTeamRoundStats, seasons } = await fetch(`https://fanteam-game.api.scoutgg.net/season_participations/lite?season_id=${this.season}&side=all&rotation=false&round=${this.round}&$reload=false&bearer[white_label]=fanteam`)
       // Gracefully handle wrong params
       .then((response) => {
+        this.loaded = true
         if(!response.ok) {
-          this.loaded = true
           console.warn('Load failed. Did you pass wrong params to the component?')
           return []
         }
