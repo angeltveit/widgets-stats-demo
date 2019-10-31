@@ -1,0 +1,53 @@
+{
+  "name": "lagringen",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "budo src --dir public --serve public/build.js --live --open -- -t babelify",
+    "watch": "watchify src/index.js -o public/build.js -t [babelify] -p [ browserify-hmr -m websocket --supportModes [ websocket ] ]",
+    "build": "browserify src/index.js -o public/build.js -t babelify"
+  },
+  "author": "Torbjorn Angeltveit",
+  "license": "ISC",
+  "browserify": {
+    "transform": [
+      "fn-pug/lib/transform/browserify",
+      [
+        "babelify",
+        {
+          "extensions": [
+            ".js",
+            ".jade"
+          ]
+        }
+      ]
+    ]
+  },
+  "dependencies": {
+    "@scoutgg/widgets": "^2.0.0",
+    "budo": "^11.6.3",
+    "hyperhtml": "^2.13.0",
+    "moment": "^2.22.2",
+    "moment-timezone": "^0.5.21",
+    "pug": "^2.0.3",
+    "vdom": "^0.0.22",
+    "virtual-dom": "^2.1.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0-beta.54",
+    "@babel/plugin-proposal-class-properties": "^7.0.0-beta.54",
+    "@babel/plugin-proposal-decorators": "^7.0.0",
+    "@babel/plugin-proposal-optional-chaining": "^7.0.0",
+    "@babel/plugin-transform-async-to-generator": "^7.1.0",
+    "@babel/plugin-transform-runtime": "^7.1.0",
+    "@babel/preset-env": "^7.0.0",
+    "babelify": "9",
+    "browserify": "^16.2.2",
+    "browserify-hmr": "^0.3.6",
+    "fn-pug": "scoutgg/fn-pug",
+    "watchify": "^3.11.0"
+  }
+}

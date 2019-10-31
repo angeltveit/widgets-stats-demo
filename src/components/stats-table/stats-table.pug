@@ -1,0 +1,105 @@
+
+h1 Stats Table Demo
+if seasonTeamRoundStats && seasonTeamRoundStats.length
+  .actions
+    .left(
+      (click)=changeGw(this.round - 1)
+    )='<'
+    h3=`Gameweek ${round}`
+    .right(
+      (click)=changeGw(this.round + 1)
+    )='>'
+  .frame
+    if loading
+      .loader
+    .grid(class={ loading: loading })
+      .header.team Team
+      .header Played
+      .header Wins
+      .header Draws
+      .header Loss
+      .header Points
+      .header Rank
+      each stat in seasonTeamRoundStats
+        .column.team=stat.realTeam.name
+        .column.played=stat.played
+        .column.wins=stat.wins
+        .column.draws=stat.draws
+        .column.loss=stat.losses
+        .column.points=stat.points
+        .column.rank=stat.rank
+else if loaded
+  p.error No data available
+
+// Styles
+style.
+  :host {
+    display: block;
+    max-width: 900px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: auto 1fr 1fr 1fr 1fr 1fr 1fr;
+  }
+  .column, .header {
+    padding: .25em 1em;
+    text-align: center;
+  }
+  .team {
+    text-align: left;
+  }
+  .team,.header {
+    background-color: rgba(0,0,0,0.1);
+    font-weight: bolder;
+  }
+  .actions {
+    display: flex;
+    justify-content: space-between;
+  }
+  .left, .right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: rgba(69, 130, 196, 1);
+    color: #fff;
+    height: 1.5em;
+    width: 1.5em;
+  }
+  .frame {
+    position: relative;
+  }
+  .grid.loading {
+    background-color: rgba(0,0,0,.5)
+  }
+  .loader {
+    display: inline-block;
+    width: 64px;
+    height: 64px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 10;
+  }
+  .loader:after {
+    content: " ";
+    display: block;
+    width: 46px;
+    height: 46px;
+    margin: 1px;
+    border-radius: 50%;
+    border: 5px solid #fff;
+    border-color: #fff transparent #fff transparent;
+    animation: spin 1.2s linear infinite;
+  }
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
