@@ -29,7 +29,7 @@
     "@scoutgg/widgets": "^2.0.0",
     "budo": "^11.6.3",
     "hyperhtml": "^2.13.0",
-    "moment": "^2.22.2",
+    "moment": "^2.29.2",
     "moment-timezone": "^0.5.21",
     "pug": "^2.0.3",
     "vdom": "^0.0.22",
