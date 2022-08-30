@@ -30,7 +30,7 @@
     "budo": "^11.6.3",
     "hyperhtml": "^2.13.0",
     "moment": "^2.22.2",
-    "moment-timezone": "^0.5.21",
+    "moment-timezone": "^0.5.35",
     "pug": "^2.0.3",
     "vdom": "^0.0.22",
     "virtual-dom": "^2.1.1"
